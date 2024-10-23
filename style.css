@@ -1,0 +1,595 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "montserrat";
+    color: #fff;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+  *::selection {
+    background-color: #fff;
+    color: #95c11e;
+}
+
+body::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    background: #95c11e;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 50px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#cursor {
+    width: 20px;
+    height: 20px;
+    background-color: #95C11E;
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Ensures it stays on top of the blur */
+}
+
+#cursorBlur {
+    width: 300px;
+    height: 300px;
+    background-color: #95C11E; /* Semi-transparent red */
+    border-radius: 50%;
+    position: absolute;
+    filter: blur(120px);
+    pointer-events: none; /* Creates the blur effect */
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensures the blur is behind the small circle */
+}
+
+#nav {
+    height: 130px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    padding: 0 120px;
+    gap: 50px;
+    position: fixed;
+    justify-content: flex-start;
+    z-index: 99;
+}
+
+#nav img {
+    height: 4.5vw;
+}
+
+#nav h4 {
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1.05vw;
+}
+
+#nav.black-bg h4:hover {
+    color: #95c11e;
+    transition: color 0.3s ease;
+}
+
+
+video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    position: fixed;
+}
+
+#main {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+#page1 {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
+
+#page1 h1 {
+    font-size: 7.5vw;
+    font-weight: 900;
+    position: relative;
+}
+
+#page1 h1::before {
+    content: "EAT. DRINK. PLAY.";
+    position: absolute;
+    color: #000;
+    top: -5px;
+    left: -5px;
+    -webkit-text-stroke: 1.5px #95c11e;
+    z-index: -1;
+}
+
+#page1 h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#page1 p {
+    font-size: 1.2vw;
+    font-weight: 500;
+    width: 40%;
+}
+
+#page1 #arrow {
+    height: 220px;
+    width: 220px;
+    background-color: transparent;
+    border: 2px solid #95c11e;
+    position: absolute;
+    display: flex;
+    left: -4%;
+    bottom: 0%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all ease 0.5s;
+    overflow: hidden; /* To prevent the icon from affecting scaling */
+}
+
+#page1 #arrow i {
+    font-size: 50px;
+    font-weight: 100;
+    transition: none; /* Make sure the icon size remains the same */
+}
+
+#page1 #arrow:hover {
+    background-color: #95c11e;
+    transform: scale(0.35); /* Scale down the entire circle */
+}
+
+#page1 #arrow:hover i {
+    transform: scale(1.67); /* Scale the icon back up to original size */
+}
+
+
+#page2 {
+    min-height: 100vh;
+    width: 100%;
+    z-index: 10;
+}
+
+#scroller {
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+#scroller::-webkit-scrollbar {
+    display: none;
+}
+
+#scroller-in {
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#scroller h4{
+    display: inline-block;
+    font-size: 120px;
+    font-weight:900;
+    font-family: "Montserrat";
+    color: #000;
+    transition: all liner 0.5s;
+    text-shadow: 
+    1px 1px 0px white, 
+    -1px 1px 0px white, 
+    1px -1px 0px white, 
+    -1px -1px 0px white;
+    margin-right: 20px;
+}
+
+
+#scroller h4:hover {
+    color: #95c11e;
+    -webkit-text-stroke: 2px #95c11e;
+}
+
+@keyframes scroll {
+    from {
+    transform: translateX(0);
+    }
+    to {
+    transform: translateX(-100%);
+    }
+}
+
+#about{
+    margin-top: 20px;
+    display: flex;
+    height: 45vh;
+    width: 100%;
+    padding: 0 80px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+}
+
+#about img{
+    height: 300px;
+    width: 250px;
+    border-radius: 15px;
+    object-fit: cover;
+    z-index: 2;
+}
+
+#about-us{
+    color: white;
+    width: 60%;
+    text-align: center;
+    z-index: 2;
+}
+
+#about-us h3{
+    font-size:55px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    z-index: 2;
+    color: white;
+}
+
+#about-us p{
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 300;
+    margin-bottom: 25px;
+    z-index: 7;
+}
+
+
+#cards-container{
+    height:60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:70px;
+    position: relative;
+    z-index: 7;
+}
+
+/* General card styling */
+.card {
+    height: 85%;
+    width: 25%;
+    background-position: center;
+    border-radius: 20px;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.6s ease; /* Smooth rotation on hover */
+}
+
+.card:hover {
+    transform: rotate3d(-1, 1, 0, 20deg); /* Tilt animation */
+}
+
+.bottom-heading1{
+    position: absolute;
+    bottom: 65px;
+    left: 25px;
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+    color: #fff;
+    z-index: 2; /* On top of the card */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional for better contrast */
+    transition: opacity 0.6s ease; /* Smooth fade-out on hover */
+}
+
+
+/* Bottom heading styling - visible initially */
+.bottom-heading{
+    position: absolute;
+    bottom: 20px;
+    left: 25px;
+    white-space: nowrap;
+    font-size: 40px;
+    font-weight: 800;
+    color: #fff;
+    z-index: 2; /* On top of the card */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional for better contrast */
+    transition: opacity 0.6s ease; /* Smooth fade-out on hover */
+}
+
+/* Hide bottom-heading when hovering over the card */
+.card:hover .bottom-heading, .card:hover .bottom-heading1{
+    opacity: 0; /* Disappear when hovered */
+}
+
+/* Background images */
+#card1 {
+    background-image: url('https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer-1024x682.jpg?strip=all&lossy=1&sharp=1&ssl=1');
+}
+
+#card2 {
+    background-image: url('https://lostislandminigolf.com/wp-content/uploads/2021/12/Lost-Island-day_13-Edit-1024x683.jpg');
+}
+
+#card3 {
+    background-image: url('https://fremantlepublicgolfcourse.com/wp-content/uploads/sites/26/2024/05/2738cb0e-23ff-4b1d-a7b9-20cf188300ee.jpg');
+}
+
+/* Specific styling for h3 in Card 2 */
+.card h3.bottom-heading {
+    font-size: 30px; /* Make the h3 smaller */
+    margin-bottom: 5px; /* Space between h3 and h2 */
+    color: #fff; /* Adjust color if needed */
+    text-align: center; /* Center align if required */
+}
+
+/* Overlay - hidden initially */
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(149, 193, 30, 1); /* Green transparent overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px;
+    opacity: 0; /* Hidden initially */
+    transition: opacity 0.6s ease; /* Smooth fade-in on hover */
+    z-index: 1; /* Under the heading initially */
+}
+
+/* Show overlay on hover */
+.card:hover .overlay {
+    opacity: 1; /* Make overlay visible */
+}
+
+/* Overlay text styling */
+.overlay h2 {
+    color: #000;
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.overlay p {
+    color: #000;
+    font-size: 18px;
+}
+
+.card:hover {
+    transform: rotate3d(-1, 1, 0, 20deg); /* Tilt animation */
+}
+
+#green-div{
+    height: 40vh;
+    display: flex;
+    background:linear-gradient(to left bottom,#4DAF2D, #A7D822);
+    align-items: center;
+    justify-content: space-between;
+}
+
+#green-div h3{
+text-transform: uppercase;
+width: 50%;
+font-size: 40px;
+text-align: center;
+font-weight: 900;
+line-height: 50px;
+color: #000;
+}
+
+#green-div img{
+    height: 100%;
+    object-fit: cover;
+    width: 12%;
+    opacity: 0.5;
+}
+
+#img1{
+    transform: rotate(180deg);
+}
+
+#page3{
+    height:100vh;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+#page3 p{
+    text-transform: uppercase;
+    font-size: 30px;
+    width: 50%;
+    font-weight: 700;
+    text-align: center;
+    line-height: 40px;
+}
+
+#page3 img{
+    position: absolute;
+    height: 60px;
+}
+
+#colon1{
+    left:15%;
+    top:30%;
+}
+
+#colon2{
+    bottom:30%;
+    right: 15%;
+}
+
+#page4 {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.elem {
+    height: 70%;
+    width: 26%;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+}
+
+.elem h2 {
+    height: 100%;
+    width: 100%;
+    background-color: #95c11e;
+    display: flex;
+    color: #000;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 0.5s;
+    font-size: 2vw;
+    position: absolute;
+    z-index: 10;
+}
+
+.elem img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all ease 0.5s;
+    scale: 1.1;
+}
+
+.elem:hover h2 {
+    color: #fff;
+    background-color: transparent;
+}
+
+.elem:hover img {
+    scale: 1;
+}
+
+#page4 h1 {
+    font-size:98px;
+    position: absolute;
+    top: -15%;
+    font-weight: 900;
+    color: #000;
+    text-shadow: 
+    1px 1px 0px white, 
+    -1px 1px 0px white, 
+    1px -1px 0px white, 
+    -1px -1px 0px white;
+}
+
+#footer {
+    height: 40vh;
+    width: 100%;
+    background: linear-gradient(to left bottom, #119f3a 0%, #a3d421 80%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6.5vw;
+    padding: 0 100px 0 200px; 
+}
+
+#footer > img {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: 0;
+}
+
+#f1 img {
+    height: 120px;
+    object-fit: cover;
+}
+
+#f1,
+#f2,
+#f3,
+#f4 {
+    width: fit-content;
+    position: relative;
+    z-index: 99;
+}
+
+#f2 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 900;
+    transition: all ease 0.5s;
+    margin-bottom: 8px;
+}
+
+#f3 h3 {
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 900;
+    transition: all ease 0.5s;
+    margin-bottom: 8px;
+}
+
+#f4 h4 {
+    font-size: 1vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 8px;
+}
+
+#f4 h3{
+    font-size: 1.6vw;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: #000;
+    transition: all ease 0.5s;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+#f2 h3:hover, #f3 h3:hover, #f4 h3:hover{
+    color: white;
+}
